@@ -1,4 +1,5 @@
 //import React from 'react'
+import PerfilImagen from '../assets/Perfil.jpeg'
 
 export default function UserProfile() {
 
@@ -20,7 +21,7 @@ export default function UserProfile() {
         {/* Contenedor del perfil del usuario*/}
         <div className="dashboard-card mb-6">
           <div className="flex items-center">
-            <img className="h-32 w-32 rounded-full mr-6" src="/placeholder.svg" alt="User avatar" />
+            <img className="h-32 w-32 rounded-full mr-6" src={PerfilImagen} alt="User avatar" />
             <div>
               <h2 className="dashboard-title" style={{ color: 'black' }}>Admin User</h2>
               <p className="dashboard-text">Rol: Administrador</p>

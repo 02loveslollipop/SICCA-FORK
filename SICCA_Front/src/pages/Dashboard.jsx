@@ -4,6 +4,7 @@ import UserProfile from '../components/UserProfile'
 import Panel from '../components/Panel'
 import Sales from '../components/Sales'
 import ProfileMenu from '../components/ProfileMenu'
+import ImagenPerfil from '../assets/Perfil.jpeg'
 import '../styles/global.css'
 
 export default function Dashboard() {
@@ -31,11 +32,10 @@ export default function Dashboard() {
           <div className="relative">
             <button
               onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-              className="flex items-center focus:outline-none"
-            >
+              className="flex items-center focus:outline-none" style={{ background: '#cccccc00' }}>
               <img
                 className="h-8 w-8 rounded-full object-cover"
-                src="/placeholder.svg"
+                src={ImagenPerfil}
                 alt="Profile"
               />
               <svg className="h-4 w-4 ml-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
