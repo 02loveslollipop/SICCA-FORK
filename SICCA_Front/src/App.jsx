@@ -2,6 +2,7 @@
 import './styles/LoginPage.css'
 import Dashboard from './pages/Dashboard';
 //import LoginPage from './pages/LoginPage';
+import './styles/global.css';
 
 
 function App() {

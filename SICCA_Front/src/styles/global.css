@@ -1,0 +1,44 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Estilos personalizados adicionales */
+body {
+  @apply bg-gray-100;
+}
+
+.dashboard-card {
+  @apply bg-white shadow-md rounded-lg p-6;
+}
+
+.dashboard-title {
+  @apply text-2xl font-bold mb-4;
+}
+
+.dashboard-subtitle {
+  @apply text-lg font-semibold mb-2;
+}
+
+.dashboard-text {
+  @apply text-gray-600;
+}
+
+.dashboard-button {
+  @apply bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded;
+}
+
+.dashboard-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.dashboard-table {
+  @apply min-w-full divide-y divide-gray-200;
+}
+
+.dashboard-table th {
+  @apply px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.dashboard-table td {
+  @apply px-6 py-4 whitespace-nowrap;
+}
