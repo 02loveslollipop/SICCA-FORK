@@ -1,9 +1,7 @@
 //import { useState } from 'react'
 import './styles/LoginPage.css'
-//import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import LoginPage from './pages/LoginPage';
+//import LoginPage from './pages/LoginPage';
 
 
 function App() {
@@ -13,7 +11,7 @@ function App() {
     <>
       <div className='App'>
         <header className='App-header'>
-          <LoginPage />
+          <Dashboard />
         </header>
       </div>
     </>
