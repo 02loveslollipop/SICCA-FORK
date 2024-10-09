@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 
 export default function Panel() {
 
@@ -51,9 +51,9 @@ export default function Panel() {
 
         {/* Tabla de alertas*/}
         <div className="dashboard-card">
-            <h3 className="dashboard-subtitle">Alertas de Stock</h3>
+            <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Alertas de Stock</h3>
             <div className="overflow-x-auto">
-              <table className="dashboard-table">
+              <table className="dashboard-table" style={{ color: 'black' }}>
                 <thead>
                   <tr>
                     <th>Alerta ID</th>
@@ -78,9 +78,9 @@ export default function Panel() {
         </div>
         <div>
 
-          {/* Grafica de ventas*/}
+          {/* Grafica de productos mas vendidos*/}
           <div className="dashboard-card mb-6">
-            <h3 className="dashboard-subtitle">Productos Más Vendidos</h3>
+            <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Productos Más Vendidos</h3>
             {/* Aquí va la gráfica circular */}
             <div className="h-64 bg-gray-200 flex items-center justify-center">
               <p>Gráfica Circular de Productos Más Vendidos</p>
@@ -89,9 +89,9 @@ export default function Panel() {
 
           {/* TABLA PRODUCTOS MAS VENDIDOS*/}
           <div className="dashboard-card">
-            <h3 className="dashboard-subtitle">Productos Más Vendidos</h3>
+            <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Productos Más Vendidos</h3>
             <div className="overflow-x-auto">
-              <table className="dashboard-table">
+              <table className="dashboard-table" style={{ color: 'black' }}>
                 <thead>
                   <tr>
                     <th>Producto ID</th>

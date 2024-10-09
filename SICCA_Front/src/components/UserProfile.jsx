@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 
 export default function UserProfile() {
 
@@ -22,8 +22,9 @@ export default function UserProfile() {
           <div className="flex items-center">
             <img className="h-32 w-32 rounded-full mr-6" src="/placeholder.svg" alt="User avatar" />
             <div>
-              <h2 className="dashboard-title">Admin User</h2>
+              <h2 className="dashboard-title" style={{ color: 'black' }}>Admin User</h2>
               <p className="dashboard-text">Rol: Administrador</p>
+              <p className="dashboard-text">ID: 128754</p>
               <p className="text-green-500 font-semibold">En línea</p>
             </div>
           </div>
@@ -31,8 +32,8 @@ export default function UserProfile() {
 
         {/* Tabla del historial*/}
         <div className="dashboard-card overflow-x-auto">
-          <h3 className="dashboard-subtitle mb-4">Historial de Usuarios</h3>
-          <table className="dashboard-table w-full">
+          <h3 className="dashboard-subtitle mb-4" style={{ color: 'black' }}>Historial de Usuarios</h3>
+          <table className="dashboard-table w-full" style={{ color: 'black' }}>
             <thead>
               <tr>
                 <th>ID</th>
@@ -57,13 +58,13 @@ export default function UserProfile() {
     {/* Contenedor de los filtros*/}
       </div>
       <div className="dashboard-card ml-4">
-        <h3 className="dashboard-subtitle mb-4">Listado de Usuarios</h3>
+        <h3 className="dashboard-subtitle mb-4" style={{ color: 'black' }}>Listado de Usuarios</h3>
         <input
           type="text"
           placeholder="Buscar por ID"
           className="dashboard-input mb-4"
         />
-        <ul className="space-y-2">
+        <ul className="space-y-2" style={{ color: 'black' }}>
           {users.map((user) => (
             <li key={user.id} className="flex items-center">
               <span className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">
