@@ -1,46 +1,56 @@
 import React from 'react'
 
 export default function Panel() {
+
+  {/* VARIABLES PARA PONER EN LA TABLA PARA PROBARLA COMO SE VE:)*/}
   const alerts = [
     { id: 1, date: '2023-05-20', quantity: 5, status: 'Pendiente' },
     { id: 2, date: '2023-05-19', quantity: 3, status: 'Resuelto' },
   ]
 
   const topProducts = [
-    { id: 1, name: 'Producto A', category: 'Categoría 1' },
-    { id: 2, name: 'Producto B', category: 'Categoría 2' },
+    { id: 1, name: 'Producto 1', category: 'Categoría 1' },
+    { id: 2, name: 'Producto 2', category: 'Categoría 2' },
   ]
 
   return (
     <div>
+
+      {/* Contenedores de la parte superior*/}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <div className="dashboard-card">
-          <h3 className="dashboard-subtitle">Ganancias</h3>
-          <p className="text-2xl font-bold text-green-600">$10,000</p>
+          <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Ganancia</h3>
+          <p className="text-2xl font-bold text-green-600">$30,000</p>
         </div>
         <div className="dashboard-card">
-          <h3 className="dashboard-subtitle">Devoluciones</h3>
-          <p className="text-2xl font-bold text-red-600">$500</p>
+          <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Devolución de ventas</h3>
+          <p className="text-2xl font-bold text-red-600">$30,000</p>
         </div>
         <div className="dashboard-card">
-          <h3 className="dashboard-subtitle">Compras</h3>
-          <p className="text-2xl font-bold text-blue-600">$8,000</p>
+          <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Compra</h3>
+          <p className="text-2xl font-bold text-blue-600">$30,000</p>
         </div>
         <div className="dashboard-card">
-          <h3 className="dashboard-subtitle">Ingresos</h3>
-          <p className="text-2xl font-bold text-purple-600">$18,000</p>
+          <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Ingreso</h3>
+          <p className="text-2xl font-bold text-purple-600">$30,000</p>
         </div>
       </div>
+
+      {/* Contenedor GENERAL*/}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        {/* Contenedor para la grafica de rectanculos*/}
         <div>
           <div className="dashboard-card mb-6">
-            <h3 className="dashboard-subtitle">Gráfica de Ventas</h3>
+            <h3 className="dashboard-subtitle" style={{ color: 'black' }}>GRAFICA DE QUE?</h3>
             {/* Aquí va la gráfica esa de rectangulos*/}
             <div className="h-64 bg-gray-200 flex items-center justify-center">
               <p>Gráfica de Ventas</p>
             </div>
-          </div>
-          <div className="dashboard-card">
+        </div>
+
+        {/* Tabla de alertas*/}
+        <div className="dashboard-card">
             <h3 className="dashboard-subtitle">Alertas de Stock</h3>
             <div className="overflow-x-auto">
               <table className="dashboard-table">
@@ -67,6 +77,8 @@ export default function Panel() {
           </div>
         </div>
         <div>
+
+          {/* Grafica de ventas*/}
           <div className="dashboard-card mb-6">
             <h3 className="dashboard-subtitle">Productos Más Vendidos</h3>
             {/* Aquí va la gráfica circular */}
@@ -74,6 +86,8 @@ export default function Panel() {
               <p>Gráfica Circular de Productos Más Vendidos</p>
             </div>
           </div>
+
+          {/* TABLA PRODUCTOS MAS VENDIDOS*/}
           <div className="dashboard-card">
             <h3 className="dashboard-subtitle">Productos Más Vendidos</h3>
             <div className="overflow-x-auto">

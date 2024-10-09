@@ -42,3 +42,18 @@ body {
 .dashboard-table td {
   @apply px-6 py-4 whitespace-nowrap;
 }
+
+/* Estilos adicionales para el header fijo */
+.fixed-header {
+  @apply fixed top-0 left-0 right-0 z-10 bg-white shadow-md;
+}
+
+/* Estilos para el menú lateral con degradado */
+.sidebar {
+  @apply w-64 min-h-screen bg-gradient-to-b from-blue-900 to-blue-500 text-white p-4;
+}
+
+/* Estilos para los botones del menú lateral */
+.sidebar-button {
+  @apply flex items-center w-full py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-200;
+}
