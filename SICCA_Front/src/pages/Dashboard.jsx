@@ -5,7 +5,7 @@ import Panel from '../components/Panel'
 import Sales from '../components/Sales'
 import ProfileMenu from '../components/ProfileMenu'
 import ImagenPerfil from '../assets/Perfil.jpeg'
-import '../styles/global.css'
+//import '../styles/global.css'
 
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState('panel')

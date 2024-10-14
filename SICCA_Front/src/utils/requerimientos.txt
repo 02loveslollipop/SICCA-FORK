@@ -1,0 +1,7 @@
+------------------------
+instalaciones necesarias
+------------------------
+* npm install
+* npm install autoprefixer
+* npm install tailwindcss
+* npm install react-router-dom

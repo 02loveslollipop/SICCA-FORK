@@ -1,22 +1,25 @@
-//import { useState } from 'react'
-import './styles/LoginPage.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RegistrerPage from './pages/RegistrerPage';
+import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
-//import LoginPage from './pages/LoginPage';
-import './styles/global.css';
-
 
 function App() {
-  //const [count, setCount] = useState(0)
-  console.log('LoginPage component is being rendered');
+  console.log('App component is being rendered');
+
   return (
-    <>
+    <Router>
       <div className='App'>
         <header className='App-header'>
-          <Dashboard />
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/register" element={<RegistrerPage />} />
+            <Route path="/dashboard" element={<Dashboard />} /> 
+          </Routes>
         </header>
       </div>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
