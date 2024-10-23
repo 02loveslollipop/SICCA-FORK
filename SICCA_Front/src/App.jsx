@@ -4,6 +4,7 @@ import RegistrerPage from './pages/RegistrerPage';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/DashboardAdmin';
 import FacturaPopUp from './pages/FacturaPopUp';
+import RegistrarVenta from './pages/RegistrarVenta';
 
 function App() {
   console.log('App component is being rendered');
@@ -18,6 +19,7 @@ function App() {
             <Route path="/register" element={<RegistrerPage />} />
             <Route path="/dashboard" element={<Dashboard />} /> 
             <Route path="/factura" element={<FacturaPopUp />} />
+            <Route path="/registrarventa" element={<RegistrarVenta/>}/>
           </Routes>
         </header>
       </div>
