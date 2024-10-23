@@ -1,3 +1,51 @@
-.PopUp-container{
-   display: flex;
+.factura-popup {
+  width: 80%;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.factura-header, .factura-datos, .factura-tabla, .factura-observaciones, .factura-total {
+  margin-bottom:10px;
+}
+ 
+.factura-header {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.factura-datos, .factura-total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.factura-tabla table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.factura-tabla th {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+.factura-tabla td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+.factura-total-valor{
+  display: inline-block;
+  width: 45%;
+}
+
+.factura-firma {
+  display: inline-block;
+  width: 45%;
 }

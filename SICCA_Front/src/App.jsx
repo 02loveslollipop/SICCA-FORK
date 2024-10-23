@@ -14,9 +14,10 @@ function App() {
         <header className='App-header'>
           <Routes>
             //LoginPage
-            <Route path="/" element={< FacturaPopUp/>} />
+            <Route path="/" element={<FacturaPopUp/>} />
             <Route path="/register" element={<RegistrerPage />} />
             <Route path="/dashboard" element={<Dashboard />} /> 
+            <Route path="/factura" element={<FacturaPopUp />} />
           </Routes>
         </header>
       </div>
