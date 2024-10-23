@@ -17,7 +17,7 @@ function App() {
             <Route path="/" element={< LoginPage/>} />
             <Route path="/register" element={<RegistrerPage />} />
             <Route path="/dashboard" element={<Dashboard />} /> 
-            <Route path="/factura" element={<FacturaPopUp />} /> 
+            <Route path="/factura" element={<FacturaPopUp />} />
           </Routes>
         </header>
       </div>
