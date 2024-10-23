@@ -1,3 +1,7 @@
+body{
+  background-color: white;
+}
+
 .login-container {
   display: flex;
   justify-content: center; 
@@ -9,11 +13,13 @@
 .login-form {
   width: 50%;
   font-size: 20px;
+  color: black;
 }
 
 .form-input {
   margin-bottom: 1.5rem;
   font-size: 18px;
+  color: black;
 }
 
 .form-input input {
@@ -25,7 +31,6 @@
   background-color: #EDF0F2;
   font-size: 18px;
 }
-
 .checkbox {
   margin-bottom: 1.5rem;
   font-size: 18px;
