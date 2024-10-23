@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 //import React from 'react'
+// import '../styles/DashboardAdmin.css'
 
 {/* Header reutilizable*/}
 export default function Header({ setCurrentPage }) {
@@ -46,8 +47,7 @@ export default function Header({ setCurrentPage }) {
   )
 }
 
-
-// Definición de PropTypes
+// PropTypes
 Header.propTypes = {
     setCurrentPage: PropTypes.func.isRequired, 
 };

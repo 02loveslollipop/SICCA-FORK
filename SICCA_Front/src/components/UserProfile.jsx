@@ -13,28 +13,28 @@ export default function UserProfile() {
 ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="profile-page-container">
     
       {/* Contenedor de la parte izquierda*/}
-      <div className="md:col-span-3">
+      <div className="profile-info">
 
         {/* Contenedor del perfil del usuario*/}
-        <div className="dashboard-card mb-6">
-          <div className="flex items-center">
-            <img className="h-32 w-32 rounded-full mr-6" src={PerfilImagen} alt="User avatar" />
+        <div className="dashboard-card">
+          <div className="profile-details">
+            <img className="profile-image" src={PerfilImagen} alt="User avatar" />
             <div>
-              <h2 className="dashboard-title" style={{ color: 'black' }}>Admin User</h2>
-              <p className="dashboard-text">Rol: Administrador</p>
-              <p className="dashboard-text">ID: 128754</p>
-              <p className="text-green-500 font-semibold">En línea</p>
+              <h2 className="profile-title" style={{ color: 'black' }}>Admin User</h2>
+              <p className="profile-rol">Rol: Administrador</p>
+              <p className="profile-id">ID: 128754</p>
+              <p className="profile-status">En línea</p>
             </div>
           </div>
         </div>
 
         {/* Tabla del historial*/}
-        <div className="dashboard-card overflow-x-auto">
-          <h3 className="dashboard-subtitle mb-4" style={{ color: 'black' }}>Historial de Usuarios</h3>
-          <table className="dashboard-table w-full" style={{ color: 'black' }}>
+        <div className="dashboard-card user-history">
+          <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Historial de Usuarios</h3>
+          <table className="dashboard-table" style={{ color: 'black' }}>
             <thead>
               <tr>
                 <th>ID</th>
@@ -58,17 +58,17 @@ export default function UserProfile() {
 
     {/* Contenedor de los filtros*/}
       </div>
-      <div className="dashboard-card ml-4">
-        <h3 className="dashboard-subtitle mb-4" style={{ color: 'black' }}>Listado de Usuarios</h3>
+      <div className="user-list">
+        <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Listado de Usuarios</h3>
         <input
           type="text"
           placeholder="Buscar por ID"
           className="dashboard-input mb-4"
         />
-        <ul className="space-y-2" style={{ color: 'black' }}>
+        <ul className="user-list-items" style={{ color: 'black' }}>
           {users.map((user) => (
             <li key={user.id} className="flex items-center">
-              <span className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">
+              <span className="user-icon">
                 {user.name[0]}
               </span>
               {user.name}
