@@ -13,8 +13,9 @@ function App() {
       <div className='App'>
         <header className='App-header'>
           <Routes>
-            {/* LoginPage */}
-            <Route path="/" element={< FacturaPopUp/>} />
+            
+            <Route path="/" element={< LoginPage/>} />*
+            {/*<Route path="/" element={< FacturaPopUp/>} />*/}  
             <Route path="/register" element={<RegistrerPage />} />
             <Route path="/dashboard" element={<Dashboard />} /> 
             <Route path="/factura" element={<FacturaPopUp />} />
