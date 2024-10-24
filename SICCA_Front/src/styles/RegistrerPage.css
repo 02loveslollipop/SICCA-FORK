@@ -1,5 +1,6 @@
 .login-container2 {
   display: flex;
+  
   justify-content: center; 
   align-items: center; 
   margin-right: 6rem;
@@ -7,6 +8,7 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   gap : 18rem;
+  background-color: white;
 
 }
 
@@ -14,7 +16,7 @@
   width: 94%;
   font-size: 5rem;
   display: flex;
-  gap: 3rem;
+  gap: 6rem;
 }
 
 .login-form2 {

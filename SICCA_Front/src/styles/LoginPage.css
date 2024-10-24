@@ -1,5 +1,5 @@
 body{
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding-right: 5px;
   padding-top: 10px;
 }
@@ -8,6 +8,7 @@ body{
   display: flex;
   justify-content: center; 
   align-items: center; 
+  background-color: white;
   padding: 5rem;
   gap: 8rem;
 }
@@ -55,14 +56,15 @@ body{
 .illustration {
   display: flex; 
   justify-content: center; 
-  width: 50%; 
+  width: 30%; 
   padding-left: 20px;
   padding-right: 20px;
 }
 
 .illustration img {
   width: 100%;
-  max-width: 500px;
+  max-width: 300px;
+  padding-right: 40px;
   transform: scale(1.8);
   padding-top: 1rem;
   padding-left: 5rem;
