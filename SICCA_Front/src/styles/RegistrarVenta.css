@@ -1,0 +1,187 @@
+Estilos para la página de ventas
+
+/* Reset básico para márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Estilo del body */
+  html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #f4f6f8;
+    color: #000000;
+  }
+  
+
+  /* Contenedor principal de la página */
+  .ventas-container {
+    max-width: 1200px;
+    margin: 20px 20px auto;
+    padding: 40px;
+    height: 85%;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px #b420201a;
+  }
+  
+  /* Contenedor del dashboard */
+.dashboard-container {
+    display: flex;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+  }
+
+  /* Encabezado de la página de Ventas */
+  .ventas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .ventas-header h1 {
+    color: #1E88E5;
+    font-size: 28px;
+    font-weight: 600;
+    
+  }
+  
+  /* Botón Nueva Venta */
+  .nueva-venta-boton {
+    background-color: #1E88E5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+
+  .nueva-venta-boton:hover {
+    background-color: #165a9d;
+  }
+  
+  /* Buscador */
+  .buscador {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 15%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  /* Filtros */
+  .filtros {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 50%;
+    flex-direction: row-reverse;
+  }
+
+  /* Contenedor para Buscador y Filtros, para que queden juntos y alineados */
+.buscador-filtros-container {
+    display: flex;
+    gap: 15px; 
+    margin-bottom: 20px;
+    width: 100%; 
+    max-width: 1200px; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  /* Modifica los botones del filtro */
+  .filtros input, .filtros select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 150px;
+  }
+
+  /* Contenedor del select */
+.filtros select {
+    appearance: none; /* Oculta la flecha nativa */
+    -webkit-appearance: none; /* Oculta la flecha en Safari/Chrome */
+    -moz-appearance: none; /* Oculta la flecha en Firefox */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 150px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230D1A3A'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Ajusta la posición */
+    background-size: 20px; /* Tamaño de la flecha */
+    cursor: pointer;
+  }
+  
+  /* Asegurar que en dispositivos móviles no se sobrescriba */
+  select::-ms-expand {
+    display: none;
+  }
+  
+  /* Tabla de Ventas */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+    /* Color de ID Fecha Vendendpr */
+  th {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    text-align: left;
+  }
+
+/* Color de la letra de la tabla de ventas */
+  tbody {color:rgb(0, 0, 0);}
+  
+  /* Color lineas de la tabla */
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ababab;
+  }
+  
+  /* Hover de cada venta */
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: auto;
+  }
+  
+ 
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .ventas-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .filtros {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .filtros input, .filtros select {
+      width: 100%;
+    }
+  
+    .nueva-venta-boton {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  
+ 

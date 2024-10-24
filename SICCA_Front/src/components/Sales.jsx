@@ -24,6 +24,16 @@ export default function Sales() {
         </div>
       </div>
 
+      {/* Grafica de productos mas vendidos*/}
+      <div className="dashboard-card mb-6">
+        <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Productos Más Vendidos</h3>
+        {/* Aquí va la gráfica circular */}
+        <div className="h-64 bg-gray-200 flex items-center justify-center">
+          <p>Gráfica Circular de Productos Más Vendidos</p>
+        </div>
+      </div>
+
     </div>
+    
   )
 }

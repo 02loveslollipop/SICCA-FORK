@@ -5,3 +5,5 @@ instalaciones necesarias
 * npm install autoprefixer
 * npm install tailwindcss
 * npm install react-router-dom
+* npm install react-icons
+
