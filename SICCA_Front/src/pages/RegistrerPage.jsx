@@ -23,7 +23,9 @@ const RegistrerPage = () => {
           <FormInput label="Teléfono" type="number" placeholder="Ingresa tu teléfono" />
         </div>  
         <FormInput label="Contraseña" type="password" placeholder="Ingresa tu contraseña" />
-        <Checkbox label="Estoy de acuerdo con los términos, la política de privacidad y honorarios" />
+        <div className="checkbox-container">
+          <Checkbox label=" Estoy de acuerdo con los términos, la política de privacidad y honorarios" />
+        </div>
         <Button text="Registrarse" />
         <p className="register-link2">
           ¿Ya tienes una cuenta? <Link to="/">Acceder</Link>

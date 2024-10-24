@@ -14,7 +14,7 @@ const LoginPage = () => {
         <p>Observa tu crecimiento y obtén soporte!</p>
         <FormInput label="Correo" type="email" placeholder="Ingrese su correo" />
         <FormInput label="Contraseña" type="password" placeholder="Mínimo 8 caracteres" />
-        <Checkbox label="Mostrar" />
+        <Checkbox label=" Mostrar" />
         <Button text="Acceder" />
         <p className="register-link">
           ¿No estás registrado? <Link to="/register">Crear una nueva cuenta</Link>

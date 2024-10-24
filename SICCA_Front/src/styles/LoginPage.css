@@ -1,7 +1,5 @@
 body{
   background-color: rgb(255, 255, 255);
-  padding-right: 5px;
-  padding-top: 10px;
 }
 
 .login-container {
@@ -9,7 +7,7 @@ body{
   justify-content: center; 
   align-items: center; 
   background-color: white;
-  padding: 5rem;
+  padding: 8rem;
   gap: 8rem;
 }
 
