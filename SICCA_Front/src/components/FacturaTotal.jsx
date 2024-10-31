@@ -10,7 +10,7 @@ const FacturaTotal = () => {
       </div>
       <div className="factura-firma">
         <label>Firma:</label>
-        <input type="text" value="caliche" readOnly />
+        <div className="firma-linea"></div>
       </div>
     </div>
   );

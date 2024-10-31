@@ -10,15 +10,21 @@ const FacturaHeader = () => {
       </div>
       <div className="factura-info">
         <h1>SICA</h1>
-        <p>Te queremos mucho, gracias por comprar en nuestra bella tienda...</p>
-        <p>Correo: mitienda@hotmail.co</p>
-        <p>Web: www.holasitioincreible.com</p>
-        <p>Teléfono: 3102883679</p>
-        <p>Dirección: upb_laureles</p>
+        <p>Te queremos mucho, gracias por comprar en nuestra bella tienda, vuelve pronto... </p>
+        <div className="factura-contact">
+          <div className="factura-left">
+            <p>Correo: sicca@hot.com</p>
+            <p>Web: www.sicca.com</p>
+          </div>
+          <div className="factura-right">
+            <p>Teléfono: 3102883679</p>
+            <p>Dirección: UPB</p>
+          </div>
+        </div>
       </div>
       <div className="factura-fecha">
         <label>Fecha:</label>
-        <input type="text" placeholder="DD/MM/AAAA" />
+        <input type="date" placeholder="DD/MM/AAAA" />
       </div>
     </div>
   );

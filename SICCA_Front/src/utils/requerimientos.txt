@@ -6,5 +6,6 @@ instalaciones necesarias
 * npm install tailwindcss
 * npm install react-router-dom
 * npm install react-icons
---Swal
+* npm install --save sweetalert2
+
 

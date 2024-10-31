@@ -1,18 +1,21 @@
-body{
+body {
   background-color: rgb(255, 255, 255);
 }
 
 .login-container {
+  min-height: 100vh;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: white;
-  padding: 8rem;
-  gap: 8rem;
+  gap: 2rem;
+  margin-left: -80px;
 }
 
 .login-form {
-  width: 50%;
+  width: 90%;
+  max-width: 500px;
   font-size: 20px;
   color: black;
 }
@@ -24,7 +27,8 @@ body{
 }
 
 .form-input input {
-  width: 90%;
+  width: 88%;
+  max-width: 88%;
   padding: 1rem;
   margin-top: 0.5rem;
   border: 1px solid #ccc;
@@ -32,19 +36,20 @@ body{
   background-color: #EDF0F2;
   font-size: 18px;
 }
+
 .checkbox {
-  margin-bottom: 1.5rem;
   font-size: 18px;
   margin-top: -0.5rem;
 }
 
 .btn-primary {
+  margin-top: 1rem;
   background-color: #001f3f;
   color: white;
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  width: 97%;
+  width: 100%;
   text-shadow: 2px 2px 2px black;
   font-size: 18px;
   padding-top: 15px;
@@ -52,23 +57,37 @@ body{
 }
 
 .illustration {
-  display: flex; 
-  justify-content: center; 
-  width: 30%; 
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.illustration img {
-  width: 100%;
-  max-width: 300px;
-  padding-right: 40px;
-  transform: scale(1.8);
-  padding-top: 1rem;
-  padding-left: 5rem;
+  display: none;
 }
 
 .register-link {
   margin-top: 1.8rem;
   font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .login-form {
+    width: 50%;
+  }
+
+  .illustration {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .illustration img {
+    width: 100%;
+    max-width: 300px;
+    padding-right: 40px;
+    transform: scale(2,2);
+    padding-left: 8rem;
+  }
 }

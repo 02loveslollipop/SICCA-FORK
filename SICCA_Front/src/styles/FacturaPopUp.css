@@ -1,21 +1,38 @@
 .factura-popup {
-  width: 80%;
+  width: 70%;
   margin: auto;
   background-color: white;
-  padding: 20px;
+  padding: 28px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  position: relative;
+}
+
+
+.factura-datos {
+  margin-top: 30px;
+}
+
+.factura-left, .factura-right {
+  display: inline-block;
+  width: 50%;
+}
+
+.factura-firma {
+  display: inline-block;
+  width: 40%;
 }
 
 .factura-header, .factura-datos, .factura-tabla, .factura-observaciones, .factura-total {
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
- 
+
 .factura-header {
-  margin-top: 5px;
+  margin-top: 1px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; 
   align-items: center;
+  text-align: left; 
 }
 
 .factura-datos, .factura-total {
@@ -35,17 +52,48 @@
 }
 
 .factura-tabla td {
-  padding: 10px;
+  padding: 7px;
   border-bottom: 1px solid #ccc;
   text-align: left;
 }
 
-.factura-total-valor{
+.factura-total-valor {
   display: inline-block;
-  width: 45%;
+  width: 100%;
+  padding-bottom: 20px;
 }
 
 .factura-firma {
   display: inline-block;
+  width: 40%;
+}
+
+.factura-fecha {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+}
+
+.factura-logo {
   width: 45%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.firma-linea {
+  border-top: 1px solid #000;
+  width: 65%;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.factura-info {
+  display: inline-block;
+  width: 80%;
+
+}
+
+.factura-observaciones{
+padding-top: 2%;
 }
