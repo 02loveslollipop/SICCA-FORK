@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import Header from '../components/Header'
-import UserProfile from './components/UserProfile'
-import Panel from './components/Panel'
-import Sales from './components/Sales'
-import ProfileMenu from './components/ProfileMenu'
+import UserProfile from '../components/UserProfile'
+import Panel from '../components/Panel'
+import Sales from '../components/Sales'
+import ProfileMenu from '../components/ProfileMenu'
+import '../styles/DashboardAdmin.css'
 
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState('panel')
