@@ -5,9 +5,11 @@ import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import Illustration from '../components/Ilustration';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.css';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [verPassword, setShowPassword] = useState(false);
@@ -100,7 +102,7 @@ const LoginPage = () => {
           }
           else {
             //else send to /register relative path
-            window.location.href = '/registrarventa';
+            navigate('/registrarventa');
             
           }
         } else if (response.status === 401) {
