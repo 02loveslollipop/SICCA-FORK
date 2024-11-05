@@ -73,10 +73,17 @@ const LoginPage = () => {
           },
           body: JSON.stringify({ email, password })
         });
-  
         if (response.status === 200) {
           const data = await response.json();
           const token = data.token;
+          //add token to local storage
+          localStorage.setItem('token', token);
+          //get the user requesting to /role endpoint giving the token in the header as X-Access-Token
+          const response2 = await fetch('https://sica.02loveslollipop.uk/role/${email}', {headers: {'X-Access-Token': token}, method: 'GET'});
+          const dataRole = await response2.json();
+          const role = dataRole.role;
+          //add role to local storage
+          localStorage.setItem('role', role);
           Toast.fire({
             icon: "success",
             title: "Bienvenido a SICCA"
