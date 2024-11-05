@@ -89,6 +89,15 @@ const LoginPage = () => {
             title: "Bienvenido a SICCA"
           });
           // Save the token or perform any other actions needed
+          // Redirect to the dashboard if role is admin, else redirect to the user registrar venta page
+          if (role === 'admin') {
+            //http redirect to dashboard.02loveslollipop.uk
+            window.location.href = 'https://dashboard.02loveslollipop.uk';
+          }
+          else {
+            //else send to /register relative path
+            window.location.href = '/register';
+          }
         } else if (response.status === 401) {
           Swal.fire("¡Error!", "Credenciales incorrectas", "info");
         } else {
