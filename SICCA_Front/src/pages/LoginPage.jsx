@@ -100,7 +100,7 @@ const LoginPage = () => {
           }
           else {
             //else send to /register relative path
-            window.location.href = '/register';
+            window.location.href = '/registrarventa';
             
           }
         } else if (response.status === 401) {
