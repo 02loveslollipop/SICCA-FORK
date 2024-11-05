@@ -100,8 +100,8 @@ const LoginPage = () => {
           }
           else {
             //else send to /register relative path
-            //window.location.href = '/register';
-            console.log('No eres admin');
+            window.location.href = '/register';
+            
           }
         } else if (response.status === 401) {
           Swal.fire("¡Error!", "Credenciales incorrectas", "info");
