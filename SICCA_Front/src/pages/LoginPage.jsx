@@ -50,7 +50,7 @@ const LoginPage = () => {
     return error;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validacionError = validacion();
 
@@ -65,10 +65,31 @@ const LoginPage = () => {
         Swal.fire("¡Error!", error, "info");
       });
     } else {
-      Toast.fire({
-        icon: "success",
-        title: "Bienvenido a SICCA"
-      });
+      try {
+        const response = await fetch('https://sica.02loveslollipop.uk/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+  
+        if (response.status === 200) {
+          const data = await response.json();
+          const token = data.token;
+          Toast.fire({
+            icon: "success",
+            title: "Bienvenido a SICCA"
+          });
+          // Save the token or perform any other actions needed
+        } else if (response.status === 401) {
+          Swal.fire("¡Error!", "Credenciales incorrectas", "info");
+        } else {
+          Swal.fire("¡Error!", "Ocurrió un error inesperado", "info");
+        }
+      } catch (error) {
+        Swal.fire("¡Error!", "No se pudo conectar con el servidor", "info");
+      }
     }
   };
 
