@@ -79,9 +79,12 @@ const LoginPage = () => {
           //add token to local storage
           localStorage.setItem('token', token);
           //get the user requesting to /role endpoint giving the token in the header as X-Access-Token
-          const response2 = await fetch('https://sica.02loveslollipop.uk/role/${email}', {headers: {'X-Access-Token': token}, method: 'GET'});
+          let url = `https://sica.02loveslollipop.uk/role/${email}`;
+          console.log(url);
+          const response2 = await fetch(url, {headers: {'X-Access-Token': token}, method: 'GET'});
           const dataRole = await response2.json();
-          const role = dataRole.role;
+          console.log(dataRole);
+          const role = await dataRole.role;
           //add role to local storage
           localStorage.setItem('role', role);
           Toast.fire({
@@ -90,13 +93,15 @@ const LoginPage = () => {
           });
           // Save the token or perform any other actions needed
           // Redirect to the dashboard if role is admin, else redirect to the user registrar venta page
+          console.log(role);
           if (role === 'admin') {
             //http redirect to dashboard.02loveslollipop.uk
             window.location.href = 'https://dashboard.02loveslollipop.uk';
           }
           else {
             //else send to /register relative path
-            window.location.href = '/register';
+            //window.location.href = '/register';
+            console.log('No eres admin');
           }
         } else if (response.status === 401) {
           Swal.fire("¡Error!", "Credenciales incorrectas", "info");
