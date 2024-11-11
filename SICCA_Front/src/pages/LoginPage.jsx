@@ -121,7 +121,7 @@ const LoginPage = () => {
         <p>Observa tu crecimiento y obtén soporte!</p>
         <FormInput 
           id="email"
-          label="Correo" 
+          label="Correo Electronico" 
           type="email" 
           placeholder="Ingrese su correo" 
           value={email}

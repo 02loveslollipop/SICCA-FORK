@@ -2,7 +2,7 @@
   width: 70%;
   margin: auto;
   background-color: white;
-  padding: 28px;
+  padding: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   position: relative;
@@ -10,12 +10,13 @@
 
 
 .factura-datos {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .factura-left, .factura-right {
   display: inline-block;
   width: 50%;
+  margin-right: 0px;
 }
 
 .factura-firma {
@@ -38,6 +39,7 @@
 .factura-datos, .factura-total {
   display: flex;
   justify-content: space-between;
+  align-items: center;  
 }
 
 .factura-tabla table {
@@ -75,9 +77,10 @@
 }
 
 .factura-logo {
-  width: 45%;
-  object-fit: cover;
+  width: 70%;
+  margin-left: -40px; 
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .firma-linea {
@@ -88,9 +91,11 @@
   margin-right: auto;
 }
 
+
 .factura-info {
   display: inline-block;
   width: 80%;
+  margin-left: -300px;
 
 }
 
