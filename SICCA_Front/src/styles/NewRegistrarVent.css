@@ -1,0 +1,76 @@
+.dashboard-container {
+    display: flex;
+  }
+  
+  .New_container {
+    flex: 1;
+    padding: 2rem;
+  }
+  .btn-eliminar:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  .page-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .producto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .producto-form-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .form-input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .btn-agregar, .btn-eliminar {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-agregar {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .btn-eliminar {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .boton-acciones {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .btn-generar-factura {
+    background-color: #008CBA;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
