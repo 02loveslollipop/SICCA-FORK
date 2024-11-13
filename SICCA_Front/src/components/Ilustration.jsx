@@ -4,7 +4,7 @@ import fotico from '../assets/fondo.png';
 const Illustration = () => {
   return (
     <div className="illustration">
-      <img src={fotico} alt="Login illustration" />
+      <img src={fotico} alt="Login illustration"/>
     </div>
   );
 }

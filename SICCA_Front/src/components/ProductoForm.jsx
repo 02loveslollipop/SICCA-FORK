@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 const ProductoForm = () => {
 
-  const [productos, setProductos] = useState([{ id: '', nombre: '', cantidad: '', precio: '' }]);
+  const [productos, setProductos] = useState([{ nombre: '', descripcion: '', cantidad: '', precio: '' }]);
 
   const handleAgregar = () => {
-    setProductos([...productos, { id: '', nombre: '', cantidad: '', precio: '' }]);
+    setProductos([...productos, { nombre: '', descripcion: '', cantidad: '', precio: '' }]);
   };
 
 
@@ -30,17 +30,17 @@ const ProductoForm = () => {
         <div key={index} className="producto-form-row">
           <input
             type="text"
-            name="id"
-            placeholder="ID Producto"
-            value={producto.id}
+            name="nombre"
+            placeholder="Producto"
+            value={producto.nombre}
             onChange={(e) => handleInputChange(index, e)}
             className="form-input"
           />
           <input
             type="text"
-            name="nombre"
-            placeholder="Producto"
-            value={producto.nombre}
+            name="descripcion"
+            placeholder="Descripcion"
+            value={producto.descripcion}
             onChange={(e) => handleInputChange(index, e)}
             className="form-input"
           />

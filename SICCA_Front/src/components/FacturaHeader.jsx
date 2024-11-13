@@ -1,16 +1,24 @@
-import React from 'react';
-import '../styles/FacturaPopUp.css'; 
-import Illustration from '../components/Ilustration';
+import React, { useState, useEffect } from 'react';
+import '../styles/FacturaPopUp.css';
+import Logo from '../components/Logo';
 
 const FacturaHeader = () => {
+  const [fecha, setFecha] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
+    setFecha(formattedDate);
+  }, []);
+
   return (
     <div className="factura-header">
       <div className="factura-logo">
-        <Illustration />
+        <Logo /> 
       </div>
       <div className="factura-info">
         <h1>SICA</h1>
-        <p>Te queremos mucho, gracias por comprar en nuestra bella tienda, vuelve pronto... </p>
+        <p>Te queremos mucho, gracias por comprar en nuestra bella tienda, vuelve pronto...</p>
         <div className="factura-contact">
           <div className="factura-left">
             <p>Correo: sicca@hot.com</p>
@@ -24,7 +32,7 @@ const FacturaHeader = () => {
       </div>
       <div className="factura-fecha">
         <label>Fecha:</label>
-        <input type="date" placeholder="DD/MM/AAAA" />
+        <input type="text" value={fecha} readOnly />
       </div>
     </div>
   );
