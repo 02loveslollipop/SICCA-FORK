@@ -58,13 +58,6 @@ export default function Sales() {
         </div>
       </div>
 
-      <div className="dashboard-card mb-6">
-        <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Productos Más Vendidos</h3>
-        <div className="h-64 bg-gray-200 flex items-center justify-center">
-          <p>Gráfica Circular de Productos Más Vendidos</p>
-        </div>
-      </div>
-
       <div className="dashboard-card w-full lg:col-span-2">
         <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Ventas</h3>
         <div className="overflow-x-auto w-full">
