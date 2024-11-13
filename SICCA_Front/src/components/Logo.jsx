@@ -1,10 +1,10 @@
 import React from 'react';
-import fotico from '../assets/fondo.png';
+import fotico from '../assets/logo.png';
 
 const Logo = () => {
   return (
     <div className="logo">
-      <img src={fotico} alt="Logo" style={{ width: '160px', height: 'auto' }} />
+      <img src={fotico} alt="Logo" style={{ width: '130px', height: 'auto' }} />
     </div>
   );
 }
