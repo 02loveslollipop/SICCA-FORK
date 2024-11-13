@@ -1,6 +1,6 @@
   /* Estilo general del menú lateral */
   .menu-lateral {
-    width: 100px;
+    width: 150px;
     height: 100vh;
     background: linear-gradient(to bottom, #101540, #2196F3);
     color: white;
