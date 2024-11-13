@@ -2,7 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Estilos personalizados adicionales */
+/* Estilos personalizados adicionales para el dashboard del admin*/
+/* Se utiliza el framework de tailwind css */
 body {
   @apply bg-gray-100;
 }

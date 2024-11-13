@@ -1,5 +1,40 @@
 body {
   background-color: rgb(255, 255, 255);
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px; /* Tamaño de letra global */
+  margin: 0;
+  padding: 0;   
+}
+
+.filasName-container2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+  margin-top: 1rem;
+}
+
+.filasData-container2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+}
+
+p{
+  padding-bottom: 5px;
+}
+
+h2, h3, p{ 
+  padding-top:5px ;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #001f3f;
 }
 
 .login-container {
@@ -13,17 +48,17 @@ body {
   margin-left: -80px;
 }
 
+h3, h2, p, .login-form, .form-input, .checkbox, .btn-primary, .register-link {
+  font-size: 16px;
+}
+
 .login-form {
-  width: 90%;
+  width:90%;
   max-width: 500px;
-  font-size: 20px;
-  color: black;
 }
 
 .form-input {
-  margin-bottom: 1.5rem;
-  font-size: 18px;
-  color: black;
+  margin-bottom: 1.2rem;
 }
 
 .form-input input {
@@ -34,24 +69,23 @@ body {
   border: 1px solid #ccc;
   border-radius: 15px;
   background-color: #EDF0F2;
-  font-size: 18px;
 }
 
 .checkbox {
-  font-size: 18px;
   margin-top: -0.5rem;
+  pointer-events: auto;
+  opacity: 1;
 }
 
 .btn-primary {
   margin-top: 1rem;
+  margin-bottom: -1rem;
   background-color: #001f3f;
-  color: white;
   border: none;
   border-radius: 15px;
   cursor: pointer;
   width: 100%;
   text-shadow: 2px 2px 2px black;
-  font-size: 18px;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -60,9 +94,16 @@ body {
   display: none;
 }
 
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: -5rem;
+
+}
+
 .register-link {
   margin-top: 1.8rem;
-  font-size: 18px;
 }
 
 @media (min-width: 768px) {
@@ -86,8 +127,8 @@ body {
   .illustration img {
     width: 100%;
     max-width: 300px;
-    padding-right: 40px;
-    transform: scale(2,2);
-    padding-left: 8rem;
+    padding-right: 20px;
+    transform: scale(3,3);
+    padding-left: 4rem;
   }
 }

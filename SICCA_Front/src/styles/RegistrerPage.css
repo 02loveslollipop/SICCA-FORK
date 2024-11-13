@@ -17,6 +17,7 @@ body {
   font-size: 5rem;
   display: flex;
   gap: 4rem;
+  border: none;
 }
 
 .login-form2 {
@@ -34,6 +35,7 @@ h3 {
 .form-input2 {
   margin-bottom: 0.8rem;
   font-size: 16px;
+  display: none;
 }
 
 .form-input2 input {

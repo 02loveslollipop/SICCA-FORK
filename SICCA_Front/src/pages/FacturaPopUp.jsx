@@ -4,16 +4,21 @@ import FacturaDatos from '../components/FacturaDatos';
 import FacturaTabla from '../components/FacturaTabla';
 import FacturaObservaciones from '../components/FacturaObservaciones';
 import FacturaTotal from '../components/FacturaTotal';
-import '../styles/FacturaPopUp.css'; 
+import '../styles/FacturaPopUp.css';
 
-const FacturaPopUp = () => {
+const FacturaPopUp = ({ onClose }) => {
   return (
-    <div className="factura-popup">
-      <FacturaHeader />
-      <FacturaDatos />
-      <FacturaTabla />
-      <FacturaObservaciones />
-      <FacturaTotal />
+    <div className="modal-background" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="close-button" onClick={onClose}>
+          &times;
+        </button>
+        <FacturaHeader />
+        <FacturaDatos />
+        <FacturaTabla />
+        <FacturaTotal />
+        <FacturaObservaciones />
+      </div>
     </div>
   );
 };

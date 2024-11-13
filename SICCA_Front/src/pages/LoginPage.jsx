@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+// import { Link } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
@@ -7,11 +7,12 @@ import Illustration from '../components/Ilustration';
 import Swal from 'sweetalert2';
 import '../styles/LoginPage.css';
 
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [verPassword, setShowPassword] = useState(false);
-  const [errores, setErrors] = useState({});
+  const [setErrors] = useState({});
 
   const Toast = Swal.mixin({
     toast: true,
@@ -78,24 +79,43 @@ const LoginPage = () => {
           const token = data.token;
           //add token to local storage
           localStorage.setItem('token', token);
+          
           //get the user requesting to /role endpoint giving the token in the header as X-Access-Token
-          const response2 = await fetch('https://sica.02loveslollipop.uk/role/${email}', {headers: {'X-Access-Token': token}, method: 'GET'});
+          let url = `https://sica.02loveslollipop.uk/role/${email}`;
+          console.log(url);
+          const response2 = await fetch(url, {headers: {'X-Access-Token': token}, method: 'GET'});
           const dataRole = await response2.json();
-          const role = dataRole.role;
+          console.log("Datarole"+dataRole);
+          const role = await dataRole.role;
           //add role to local storage
           localStorage.setItem('role', role);
+
+          const userName = data.user.name; // Suponiendo que el nombre está en data.user.name
+          localStorage.setItem('userName', userName);
+
           Toast.fire({
             icon: "success",
             title: "Bienvenido a SICCA"
           });
           // Save the token or perform any other actions needed
+          // Redirect to the dashboard if role is admin, else redirect to the user registrar venta page
+          console.log(role);
+          if (role === 'admin') {
+            //http redirect to dashboard.02loveslollipop.uk
+            window.location.href = '/dashboard';
+          }
+          else {
+            //else send to /register relative path
+            window.location.href = '/registrarventa';
+            
+          }
         } else if (response.status === 401) {
           Swal.fire("¡Error!", "Credenciales incorrectas", "info");
         } else {
           Swal.fire("¡Error!", "Ocurrió un error inesperado", "info");
         }
       } catch (error) {
-        Swal.fire("¡Error!", "No se pudo conectar con el servidor", "info");
+        Swal.fire("¡Error!", "No se pudo conectar con el servidor", error);
       }
     }
   };
@@ -107,7 +127,7 @@ const LoginPage = () => {
         <p>Observa tu crecimiento y obtén soporte!</p>
         <FormInput 
           id="email"
-          label="Correo" 
+          label="Correo Electronico" 
           type="email" 
           placeholder="Ingrese su correo" 
           value={email}
@@ -127,9 +147,9 @@ const LoginPage = () => {
           checked={verPassword} 
         /> 
         <Button text="Acceder" />
-        <p className="register-link">
+        {/* <p className="register-link">
           ¿No estás registrado? <Link to="/register">Crear una nueva cuenta</Link>
-        </p>
+        </p> */}
       </form>
       <Illustration />
     </div>

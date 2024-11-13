@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import UserProfile from '../components/UserProfile'
 import Panel from '../components/Panel'
 import Sales from '../components/Sales'
+import RegistrerPage from './RegistrerPage'
 import ProfileMenu from '../components/ProfileMenu'
 import '../styles/DashboardAdmin.css'
 
@@ -18,8 +19,11 @@ export default function Dashboard() {
         return <Panel />
       case 'sales':
         return <Sales />
+      case 'register':
+        return <RegistrerPage/>
       default:
         return <Panel />
+      
     }
   }
 
