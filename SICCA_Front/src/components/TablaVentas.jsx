@@ -25,7 +25,7 @@ const TablaVentas = () => {
       <tbody>
         {ventas.map((venta, index) => (
           <tr key={index}>
-            <td><input type="checkbox" /></td>
+            <td></td>
             <td>{venta.id}</td>
             <td>{venta.fecha}</td>
             <td>{venta.vendedor}</td>

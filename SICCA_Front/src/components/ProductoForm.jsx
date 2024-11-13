@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 
 const ProductoForm = () => {
-  // Estado para manejar las filas de productos
+
   const [productos, setProductos] = useState([{ id: '', nombre: '', cantidad: '', precio: '' }]);
 
-  // Función para agregar una nueva fila
   const handleAgregar = () => {
     setProductos([...productos, { id: '', nombre: '', cantidad: '', precio: '' }]);
   };
 
-  // Función para eliminar la última fila (solo si hay más de una fila)
+
   const handleEliminar = () => {
     if (productos.length > 1) {
       setProductos(productos.slice(0, -1));
     }
   };
 
-  // Función para manejar cambios en los campos de cada producto
+
   const handleInputChange = (index, event) => {
     const { name, value } = event.target;
     const updatedProductos = productos.map((producto, i) =>
