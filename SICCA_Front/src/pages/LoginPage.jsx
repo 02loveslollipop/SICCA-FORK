@@ -7,6 +7,7 @@ import Illustration from '../components/Ilustration';
 import Swal from 'sweetalert2';
 import '../styles/LoginPage.css';
 
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
