@@ -1,17 +1,42 @@
-//import React from 'react'
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 export default function Panel() {
 
-  {/* VARIABLES PARA PONER EN LA TABLA PARA PROBARLA COMO SE VE:)*/}
-  const alerts = [
-    { id: 1, date: '2023-05-20', quantity: 5, status: 'Pendiente' },
-    { id: 2, date: '2023-05-19', quantity: 3, status: 'Resuelto' },
-  ]
+  const [topProducts, setTopProducts] = useState([]);
+  const [error, setError] = useState(null);
 
-  const topProducts = [
-    { id: 1, name: 'Producto 1', category: 'Categoría 1' },
-    { id: 2, name: 'Producto 2', category: 'Categoría 2' },
-  ]
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const token = localStorage.getItem('token'); // Obtén el token del localStorage
+
+      if (!token) {
+        setError('No se encontró el token');
+        return;
+      }
+
+      try {
+        const response = await fetch('https://sica.02loveslollipop.uk/product', {
+          method: 'GET',
+          headers: {
+            'X-Access-Token': token
+          }
+        });
+
+        if (response.ok) {
+          const productsData = await response.json();
+          setTopProducts(productsData); // Asume que productsData es un array de productos
+        } else {
+          throw new Error('Error al cargar los productos');
+        }
+      } catch (error) {
+        setError(error.message);
+        Swal.fire("¡Error!", "No se pudo conectar con el servidor", "error");
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div>
@@ -49,70 +74,46 @@ export default function Panel() {
             </div>
         </div>
 
-        {/* Tabla de alertas*/}
-        <div className="dashboard-card">
-            <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Alertas de Stock</h3>
-            <div className="overflow-x-auto">
-              <table className="dashboard-table" style={{ color: 'black' }}>
+      
+        </div>
+
+          {/* TABLA PRODUCTOS*/}
+          <div className="dashboard-card w-full lg:col-span-2">
+            <h3 className="dashboard-subtitle " style={{ color: 'black' }}>Productos</h3>
+            <div className="overflow-x-auto w-full">
+              <table className="dashboard-table w-full" style={{ color: 'black' }}>
                 <thead>
                   <tr>
-                    <th>Alerta ID</th>
-                    <th>Fecha</th>
-                    <th>Cant. Alerta</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
                     <th>Estado</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {alerts.map((alert) => (
-                    <tr key={alert.id}>
-                      <td>{alert.id}</td>
-                      <td>{alert.date}</td>
-                      <td>{alert.quantity}</td>
-                      <td>{alert.status}</td>
+                  {topProducts.length > 0 ? (
+                    topProducts.map((product) => (
+                      <tr key={product.name}>
+                        <td>{product.name}</td>
+                        <td>{product.category}</td>
+                        <td>{product.description}</td>
+                        <td>{product.quantity}</td>
+                        <td>{product.price}</td>
+                        <td>{product.status}</td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="3" className="text-center">No se encontraron productos</td>
                     </tr>
-                  ))}
+                  )}
                 </tbody>
               </table>
             </div>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
           </div>
-        </div>
-        <div>
-
-          {/* Grafica de productos mas vendidos*/}
-          <div className="dashboard-card mb-6">
-            <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Productos Más Vendidos</h3>
-            {/* Aquí va la gráfica circular */}
-            <div className="h-64 bg-gray-200 flex items-center justify-center">
-              <p>Gráfica Circular de Productos Más Vendidos</p>
-            </div>
-          </div>
-
-          {/* TABLA PRODUCTOS MAS VENDIDOS*/}
-          <div className="dashboard-card">
-            <h3 className="dashboard-subtitle" style={{ color: 'black' }}>Productos Más Vendidos</h3>
-            <div className="overflow-x-auto">
-              <table className="dashboard-table" style={{ color: 'black' }}>
-                <thead>
-                  <tr>
-                    <th>Producto ID</th>
-                    <th>Producto</th>
-                    <th>Categoría</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {topProducts.map((product) => (
-                    <tr key={product.id}>
-                      
-                      <td>{product.id}</td>
-                      <td>{product.name}</td>
-                      <td>{product.category}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )

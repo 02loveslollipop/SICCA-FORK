@@ -1,5 +1,5 @@
-import React from 'react';
-import Header from '../components/Header';
+// import React from 'react';
+import ProfileMenu from '../components/ProfileMenu';
 import Buscador from '../components/Buscador';
 import Filtros from '../components/Filtros';
 import BotonNuevaVenta from '../components/BotonNuevaVenta';
@@ -21,6 +21,7 @@ const VentasPage = () => {
       <div className="dashboard-container">
         {/* Menú lateral */}
         <MenuLateral />
+        < ProfileMenu/>
   
         {/* Contenido principal */}
         <div className="ventas-container">

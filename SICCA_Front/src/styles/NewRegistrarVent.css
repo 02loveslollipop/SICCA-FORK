@@ -1,7 +1,32 @@
+html, body {
+  height: 100%;
+  margin: 0; /* Elimina el margen predeterminado */
+  padding: 0; /* Elimina el padding predeterminado */
+}
+
 .dashboard-container {
-    display: flex;
-  }
-  
+  display: flex;
+  height: 100vh; /* 100% de la altura de la ventana */
+  width: 100%;  
+}
+
+.menu-lateral {
+  width: 250px; /* Ancho del menú lateral */
+  background-color: #333; /* Color de fondo del menú lateral */
+  color: white;
+  height: 100%; /* El menú lateral debe ocupar toda la altura */
+}
+
+.ventas-container {
+  flex: 1; /* Toma el espacio restante */
+  background-color: white; /* Fondo blanco para el contenido */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Alinea el contenido en columna */
+  height: 100%; /* Asegura que ocupe toda la altura */
+  overflow-y: auto; /* Permite el scroll si el contenido es largo */
+}
+
   .New_container {
     flex: 1;
     padding: 2rem;
@@ -9,6 +34,7 @@
   .btn-eliminar:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+
   }
   .page-title {
     font-size: 1.5rem;
