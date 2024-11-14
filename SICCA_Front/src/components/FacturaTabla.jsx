@@ -2,12 +2,10 @@ import React from 'react';
 import '../styles/FacturaPopUp.css'; 
 
 const productos = [
-  { cantidad: 2, descripcion: '500g arroz', precio: 2000, total: 4000 },
-  { cantidad: 1 , descripcion: '200g pan tajado', precio: 500, total: 500 },
-  { cantidad: 3, descripcion: '1 kg frijol', precio: 5000, total: 15000 },
-  { cantidad: 2, descripcion: '150 g chocolatina', precio: 2000, total: 4000 },
-  { cantidad: 1, descripcion: '200g atún', precio: 4000, total: 4000 },
-  { cantidad: 1, descripcion: 'trapera', precio: 2000, total: 2000 },
+  { producto: 'leche', cantidad: 5, descripcion: '1L leche', precio: 3000, total: 15000 },
+  { producto: 'queso', cantidad: 2, descripcion: '500g queso', precio: 4000, total: 8000 },
+  { producto: 'carne', cantidad: 4, descripcion: '1kg carne', precio: 10000, total: 40000 },
+  { producto: 'jugo', cantidad: 3, descripcion: '750ml jugo', precio: 2500, total: 7500 },
 ];
 
 const FacturaTabla = () => {
@@ -16,8 +14,9 @@ const FacturaTabla = () => {
       <table>
         <thead>
           <tr>
+            <th>producto</th>
+            <th>descripcion</th>
             <th>Cantidad</th>
-            <th>Descripción</th>
             <th>Precio</th>
             <th>Total</th>
           </tr>
@@ -25,8 +24,9 @@ const FacturaTabla = () => {
         <tbody>
           {productos.map((producto, index) => (
             <tr key={index}>
-              <td>{producto.cantidad}</td>
+              <td>{producto.producto}</td>
               <td>{producto.descripcion}</td>
+              <td>{producto.cantidad}</td>
               <td>{producto.precio}</td>
               <td>{producto.total}</td>
             </tr>

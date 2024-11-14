@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
@@ -13,9 +12,9 @@ const RegistrerPage = () => {
   const [correo, setCorreo] = useState('');
   const [telefono, setTelefono] = useState('');
   const [contrasena, setContrasena] = useState('');
-  const [errores, setErrores] = useState({});
+  const [setErrores] = useState({});
   const [terminos, setTerminos] = useState(false);
-
+  const [ setError] = useState(null);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -69,33 +68,71 @@ const RegistrerPage = () => {
     setTerminos(e.target.checked);
   }
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      const validaciondeerrores = validacion();
-      if (!nombre && !apellido && !correo && !telefono && !contrasena) {
-        Swal.fire("¡Error!", "los campos no pueden estar vacíos", "info");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+
+      if (!token) {
+        setError('No se encontró el token');
         return;
       }
-      if (Object.keys(validaciondeerrores).length > 0) {
-        setErrores(validaciondeerrores);
-        Object.values(validaciondeerrores).forEach((error) => {
-          Swal.fire("¡Error!", error, "info");
-        });
-      } else {
+
+    const validaciondeerrores = validacion();
+    if (Object.keys(validaciondeerrores).length > 0) {
+      setErrores(validaciondeerrores);
+      Object.values(validaciondeerrores).forEach((error) => {
+        Swal.fire("¡Error!", error, "info");
+      });
+      return;
+    }
+
+    // Si no hay errores, hacemos la solicitud a la API
+    const datosUsuario = {
+      name: nombre,
+      lastname: apellido,
+      email: correo,
+      cellphone: telefono,
+      password: contrasena,
+      role: 'user',  // Rol asignado por defecto
+    };
+
+    try {
+      const response = await fetch('https://sica.02loveslollipop.uk/user', {
+        method: 'POST',
+        headers: {
+          'X-Access-Token': token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosUsuario),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Si la respuesta es exitosa
         Toast.fire({
           icon: "success",
           title: "Usuario Registrado Correctamente"
         });
+        window.location.reload();
+      } else {
+        // Si hubo algún error en la respuesta de la API
+        Swal.fire("¡Error!", data.message || "Error al registrar el usuario", "error");
       }
-    };
+    } catch (error) {
+      // Manejo de errores si la solicitud falla
+      Swal.fire("¡Error!", "Hubo un problema al registrar el usuario", error);
+    }
+  };
 
   return (
     <div className="login-container2">
       <Illustration />
-      <div className="login-form2">
-        <h2>Registrarse</h2>
-        <h3>Gestiona tus inventarios de manera eficiente</h3>
-        <p>Vamos a configurar los datos para que puedas verificar tu cuenta personal y comenzar a configurar tu perfil de trabajo</p>
+      <div className="login-form2" >
+        <h2 style={{fontSize:30}}>Ingresar Usuario</h2>
+        {/* <h3 style={{paddingTop:30, fontSize:18}}>Gestiona tus inventarios de manera eficiente</h3> */}
+        <p style={{paddingTop:30}}>Vamos a configurar los datos para que puedas verificar tu cuenta personal y comenzar a configurar tu perfil de trabajo</p>
         <form onSubmit={handleSubmit}>
           <div className="filasName-container2">
             <FormInput
@@ -148,11 +185,9 @@ const RegistrerPage = () => {
               checked={terminos}
             />
           </div>
-          <Button text="Registrarse"/>
+          <Button text="Crear"/>
         </form>
-        <p className="register-link2">
-          ¿Ya tienes una cuenta? <Link to="/">Acceder</Link>
-        </p>
+
       </div>
     </div>
   );
