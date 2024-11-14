@@ -92,6 +92,18 @@ export default function UserProfile() {
       }
     });
   };
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Función para manejar el cambio en el campo de búsqueda
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Filtrar usuarios basados en el término de búsqueda
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   
 
   if (loading) return <div>Cargando...</div>;
@@ -145,17 +157,22 @@ export default function UserProfile() {
           type="text"
           placeholder="Buscar por nombre"
           className="dashboard-input mb-4"
+          value={searchTerm}
+          onChange={handleSearchChange} // Actualiza el término de búsqueda
         />
         <ul className="space-y-2">
-          {users.map((user) => (
-            <li key={user.id} className="flex items-center">
-              <span className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">
-                {user.name[0]}
-              </span>
-              {user.name}
-            
-            </li>
-          ))}
+          {filteredUsers.length > 0 ? (
+            filteredUsers.map((user) => (
+              <li key={user.id} className="flex items-center">
+                <span className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">
+                  {user.name[0]} {/* Usamos la primera letra del nombre */}
+                </span>
+                {user.name}
+              </li>
+            ))
+          ) : (
+            <li>No se encontraron usuarios</li> // Mensaje si no hay resultados
+          )}
         </ul>
       </div>
     </div>

@@ -40,6 +40,9 @@ const PageNewVenta = () => {
   
   // Función para cerrar la factura
   const handleCloseFactura = () => {
+    localStorage.removeItem('clienteId');
+    // Recargar la página
+    window.location.reload(); 
     setIsFacturaOpen(false);
   };
   const toggleProfileMenu = () => {

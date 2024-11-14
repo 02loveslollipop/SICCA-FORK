@@ -45,6 +45,44 @@ export default function Panel() {
     fetchProducts();
   }, []);
 
+  const deleteProduct = (productId) => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡No podrás revertir esta acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const accessToken = localStorage.getItem('token');
+          
+          // Extraer el valor de $oid del objeto producto
+          const productObjectId = productId.$oid || productId; 
+          
+          // Usar el valor del $oid en la URL de la solicitud
+          const response = await fetch(`https://sica.02loveslollipop.uk/product/${productObjectId}`, {
+            method: 'DELETE',
+            headers: {
+              'X-Access-Token': accessToken,
+              'Content-Type': 'application/json',
+            },
+          });
+          
+          if (!response.ok) {
+            throw new Error('Error al eliminar el usuario');
+          }
+  
+          window.location.reload();
+          Swal.fire('Eliminado!', 'El producto ha sido eliminado.', 'success');
+        } catch (err) {
+          Swal.fire('Error', 'No se pudo eliminar el producto', err.message);
+        }
+      }
+    });
+  };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -98,6 +136,17 @@ export default function Panel() {
     }
   };
   
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Función para manejar el cambio en el campo de búsqueda
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Filtrar productos basados en el término de búsqueda
+  const filteredProducts = topProducts.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -131,21 +180,21 @@ export default function Panel() {
             type="text"
             placeholder="Buscar por nombre"
             className="dashboard-input mb-4"
+            value={searchTerm} // Vinculamos el valor del input al estado
+            onChange={handleSearchChange} // Actualiza el término de búsqueda
           />
           <ul className="space-y-2">
-            {topProducts.length > 0 ? (
-              topProducts.map((product) => (
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
                 <li key={product.id} className="flex items-center">
                   <span className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">
-                    {product.name[0]}
+                    {product.name[0]} {/* Usamos la primera letra del nombre del producto */}
                   </span>
                   {product.name}
                 </li>
               ))
             ) : (
-              <tr>
-                <td colSpan="3" className="text-center">No se encontraron productos</td>
-              </tr>
+              <li>No se encontraron productos</li> // Mensaje si no hay resultados
             )}
           </ul>
         </div>
@@ -247,6 +296,7 @@ export default function Panel() {
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Estado</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -259,6 +309,15 @@ export default function Panel() {
                     <td>{product.quantity}</td>
                     <td>{product.price}</td>
                     <td>{product.status}</td>
+                    <td>
+                      {/* Botón de eliminar */}
+                      <button
+                        onClick={() => deleteProduct(product._id)}
+                        className="btn btn-danger" style={{color:'red'}}
+                      >
+                        Eliminar
+                      </button>
+                    </td>
                   </tr>
                 ))
               ) : (
