@@ -14,7 +14,7 @@ html, body {
   width: 250px; /* Ancho del menú lateral */
   background-color: #333; /* Color de fondo del menú lateral */
   color: white;
-  height: 100%; /* El menú lateral debe ocupar toda la altura */
+  height: 150vh; /* El menú lateral debe ocupar toda la altura de la ventana */
 }
 
 .ventas-container {
