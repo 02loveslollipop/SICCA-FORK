@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const ProductoForm = () => {
-  const [productos, setProductos] = useState([{ nombre: '', descripcion: '', cantidad: 0, precio: 0, precioUnidad: 0 }]);
+  const [productos, setProductos] = useState([{ nombre: '', descripcion: '', cantidad: 1, precio: 0, precioUnidad: 0 }]);
   const [opcionesProductos, setOpcionesProductos] = useState([]);
   const [clientes, setClientes] = useState([]); // Nuevo estado para los clientes
   const [clienteSeleccionado, setClienteSeleccionado] = useState(''); // Para almacenar el cliente seleccionado

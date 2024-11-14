@@ -7,6 +7,13 @@ Estilos para la página de ventas
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
   }
+
+  .menu-lateral {
+    width: 250px; /* Ancho del menú lateral */
+    background-color: #333; /* Color de fondo del menú lateral */
+    color: white;
+    height: 100%; /* El menú lateral debe ocupar toda la altura de la ventana */
+  }
   
   /* Estilo del body */
   html, body {
@@ -16,7 +23,6 @@ Estilos para la página de ventas
     color: #000000;
   }
   
-
   /* Contenedor principal de la página */
   .ventas-container {
     max-width: 1200px;
