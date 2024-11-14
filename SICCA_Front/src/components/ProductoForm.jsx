@@ -8,6 +8,7 @@ const ProductoForm = () => {
   const [error, setError] = useState(null);
   const [direccion, setDireccion] = useState('');
   const [nuevoCliente, setNuevoCliente] = useState('');
+  const [filtroCliente, setFiltroCliente] = useState('');
 
   // Obtener productos de la base de datos con fetch
   useEffect(() => {
@@ -115,6 +116,11 @@ const ProductoForm = () => {
   // Calcular el total de todos los productos
   const totalGeneral = productos.reduce((total, producto) => total + producto.precio, 0);
 
+  // Filtrar clientes según lo que se escribe en el campo de búsqueda
+  const clientesFiltrados = clientes.filter(cliente =>
+    cliente.name.toLowerCase().includes(filtroCliente.toLowerCase())
+  );
+
   // Manejar la selección del cliente
   const handleClienteChange = (e) => {
     const clienteId = e.target.value;
@@ -134,47 +140,66 @@ const ProductoForm = () => {
     setDireccion(''); // Al escribir un nuevo cliente, limpiamos la dirección
   };
 
+  // Manejar el cambio en el filtro de clientes
+  const handleFiltroClienteChange = (e) => {
+    setFiltroCliente(e.target.value);
+  };
+
+  // Manejar el cambio en el campo de dirección
+  const handleDireccionChange = (e) => {
+    setDireccion(e.target.value); // Permitir al usuario escribir en la dirección
+  };
+
+
   return (
     <div className="producto-form">
+      
       {/* Sección de cliente */}
       <div className="cliente-selector">
-        <label htmlFor="cliente">Seleccionar Cliente:</label>
-        <select
-          id="cliente"
-          value={clienteSeleccionado}
-          onChange={handleClienteChange}
-          className="form-input"
-        >
-          <option value="">Seleccionar cliente</option>
-          {clientes.map((cliente, index) => (
-            <option key={index} value={cliente.id}>
-              {cliente.name}
-            </option>
-          ))}
-        </select>
-        {/* Campo para escribir un nuevo cliente */}
+        <label htmlFor="cliente">Cliente:</label>
         <input
           type="text"
-          placeholder="Escribir nuevo cliente"
-          value={nuevoCliente}
-          onChange={handleNuevoClienteChange}
+          id="cliente"
+          value={filtroCliente}
+          onChange={handleFiltroClienteChange} // Actualizar filtro al escribir
+          placeholder="Buscar o escribir cliente"
           className="form-input"
         />
+
+        {/* Mostrar los clientes filtrados */}
+        {filtroCliente && (
+          <ul className="clientes-filtrados">
+            {clientesFiltrados.map((cliente, index) => (
+              <li
+                key={index}
+                onClick={() => {
+                  setClienteSeleccionado(cliente.id);
+                  setFiltroCliente(cliente.name);
+                  setDireccion(cliente.address);
+                }}
+                className="cliente-item"
+              >
+                {cliente.name}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* Campo de dirección */}
+        <div className="direccion">
+          <label htmlFor="direccion">Dirección:</label>
+          <input
+            type="text"
+            id="direccion"
+            value={direccion}
+            onChange={handleDireccionChange}
+            className="form-input"
+          />
+        </div>
+
       </div>
 
-      {/* Campo de dirección */}
-      <div className="direccion">
-        <label htmlFor="direccion">Dirección:</label>
-        <input
-          type="text"
-          id="direccion"
-          value={direccion}
-          readOnly
-          className="form-input"
-        />
-      </div>
       <div className="producto-form-header">
-        
         <span>Producto</span>
         <span>Cantidad</span>
         <span>Precio Unidad</span>
