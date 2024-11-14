@@ -182,6 +182,52 @@ Estilos para la página de ventas
       text-align: center;
     }
   }
+
+  .producto-form {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .producto-form-header,
+  .producto-form-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .producto-form-header span {
+    font-weight: bold;
+  }
+  
+  .form-input {
+    padding: 5px;
+  }
+  
+  .form-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .producto-form-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .total-cuadro {
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 10px;
+    color: #333;
+  }
   
   
  

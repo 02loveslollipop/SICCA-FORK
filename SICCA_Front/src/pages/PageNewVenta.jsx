@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../styles/NewRegistrarVent.css';
 import MenuLateral from '../components/MenuLateral';
 import ProductoForm from '../components/ProductoForm';
