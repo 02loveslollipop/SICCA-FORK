@@ -7,7 +7,7 @@ const FacturaTabla = () => {
     {
       producto: "Pera",
       descripcion: "Unidad",
-      cantidad: 1,
+      cantidad: 2,
       precio: 100,
       total: 100,
     },
@@ -21,7 +21,7 @@ const FacturaTabla = () => {
     {
       producto: "tomate",
       descripcion: "Unidad",
-      cantidad: 1,
+      cantidad: 2,
       precio: 2000,
       total: 2000,
     },
