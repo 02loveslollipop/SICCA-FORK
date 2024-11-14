@@ -14,13 +14,18 @@ const PageNewVenta = () => {
 
   const handleOpenFactura = async () => {
     // Crear el objeto venta con los datos de productos, cantidad y total
+    console.log("Productos antes de crear la venta:", productos);
     const venta = {
-      products: productos.map((producto) => ({
-        idProducto: producto.id, // El id del producto
-        quantity: producto.cantidad, // La cantidad del producto
-      })),
+      products: productos.map((producto) => {
+        const idProducto = producto._id && producto._id.$oid ? producto._id.$oid : producto._id;
+        return {
+          idProducto: idProducto, // Usa el ID correcto
+          quantity: producto.cantidad, // La cantidad del producto
+        };
+      }),
       total: totalGeneral, // El total de la venta
     };
+    
   
     try {
       // Llamar a la función para guardar la venta
@@ -46,13 +51,14 @@ const PageNewVenta = () => {
     const token = localStorage.getItem('token'); // Token de acceso
     const idClient = localStorage.getItem('clienteId'); // ID del cliente
     const idSeller = localStorage.getItem('userId'); // ID del vendedor (deberías haberlo guardado previamente)
-  
+    console.log("Productos antes de crear la venta:", venta.productos);
     if (!token || !idClient || !idSeller) {
       console.error('Faltan datos en el localStorage');
       return;
     }
   
     try {
+      const fechaVenta = new Date().toISOString();
       const response = await fetch('https://sica.02loveslollipop.uk/sale', {
         method: 'POST',
         headers: {
@@ -60,7 +66,7 @@ const PageNewVenta = () => {
           'X-Access-Token': token, // Token de acceso
         },
         body: JSON.stringify({
-          date: new Date().toUTCString(), // Fecha de la venta
+          date: fechaVenta, // Fecha de la venta
           id_client: idClient, // ID del cliente
           id_seller: idSeller, // ID del vendedor
           products: venta.products, // Productos en la venta
@@ -71,9 +77,37 @@ const PageNewVenta = () => {
       if (!response.ok) {
         throw new Error('Error al guardar la venta');
       }
-  
       const data = await response.json();
       console.log('Venta guardada:', data);
+
+      try {
+        // Obtener el ID del usuario
+        const response = await fetch('https://sica.02loveslollipop.uk/sale', {
+          method: 'GET',
+          headers: {
+            'X-Access-Token': token, // Token de acceso
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Error al obtener las ventas');
+        }
+        
+        const data = await response.json();
+        console.log('Ventas obtenidas:', data);
+        
+        // Obtener la venta más reciente
+        const ultimaVenta = data[data.length - 1];  // Asumimos que la última es la más reciente
+        console.log('Última venta:', ultimaVenta);  // Verifica qué contiene la última venta
+
+        if (ultimaVenta && ultimaVenta._id) {
+          localStorage.setItem('saleId', ultimaVenta._id.$oid);
+        } else {
+          console.error("No se pudo encontrar el ID de la venta");
+        }
+      } catch (error) {
+        console.error("Error al obtener el ID del usuario:", error);
+      }
+
       return data;
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);

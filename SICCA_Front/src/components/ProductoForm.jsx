@@ -84,6 +84,9 @@ const ProductoForm = () => {
     }
   };
 
+  // Calcular el total de todos los productos
+  const totalGeneral = productos.reduce((total, producto) => total + parseFloat(producto.precio || 0), 0);
+  
   // Manejar el cambio de selección de producto
   const handleProductoChange = (index, event) => {
     const nombreProductoSeleccionado = event.target.value;
@@ -120,8 +123,6 @@ const ProductoForm = () => {
     setProductos(updatedProductos);
   };
 
-  // Calcular el total de todos los productos
-  const totalGeneral = productos.reduce((total, producto) => total + producto.precio, 0);
 
   // Filtrar clientes según lo que se escribe en el campo de búsqueda
   const clientesFiltrados = clientes.filter(cliente =>

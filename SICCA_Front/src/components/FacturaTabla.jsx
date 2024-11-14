@@ -1,21 +1,43 @@
-import React from 'react';
+// import React from 'react';
 import '../styles/FacturaPopUp.css'; 
 
-const productos = [
-  { producto: 'leche', cantidad: 5, descripcion: '1L leche', precio: 3000, total: 15000 },
-  { producto: 'queso', cantidad: 2, descripcion: '500g queso', precio: 4000, total: 8000 },
-  { producto: 'carne', cantidad: 4, descripcion: '1kg carne', precio: 10000, total: 40000 },
-  { producto: 'jugo', cantidad: 3, descripcion: '750ml jugo', precio: 2500, total: 7500 },
-];
-
 const FacturaTabla = () => {
+  // Datos estáticos (quemados)
+  const productos = [
+    {
+      producto: "Pera",
+      descripcion: "Unidad",
+      cantidad: 2,
+      precio: 100,
+      total: 200,
+    },
+    {
+      producto: "Garbanzo",
+      descripcion: "1kg",
+      cantidad: 1,
+      precio: 8000,
+      total: 8000,
+    },
+    {
+      producto: "tomate",
+      descripcion: "Unidad",
+      cantidad: 2,
+      precio: 2000,
+      total: 4000,
+    },
+  ];
+
+  if (!Array.isArray(productos) || productos.length === 0) {
+    return <div>No hay productos para mostrar.</div>;
+  }
+
   return (
     <div className="factura-tabla">
       <table>
         <thead>
           <tr>
-            <th>producto</th>
-            <th>descripcion</th>
+            <th>Producto</th>
+            <th>Descripción</th>
             <th>Cantidad</th>
             <th>Precio</th>
             <th>Total</th>
@@ -38,3 +60,4 @@ const FacturaTabla = () => {
 };
 
 export default FacturaTabla;
+

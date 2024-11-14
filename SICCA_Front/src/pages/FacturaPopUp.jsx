@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import FacturaHeader from '../components/FacturaHeader';
 import FacturaDatos from '../components/FacturaDatos';
 import FacturaTabla from '../components/FacturaTabla';
