@@ -1,4 +1,4 @@
-// import React from 'react'; 
+// import React from 'react';
 
 export default function ProfileMenu() {
   // Función para cerrar sesión
@@ -28,8 +28,8 @@ export default function ProfileMenu() {
         localStorage.removeItem('loglevel');
         localStorage.removeItem('userName');
 
-    
-        window.location.href = '/'
+        // Redirigir al usuario a la página de inicio
+        window.location.href = '/';
       } else {
         alert(data.message || "Error al cerrar sesión.");
       }
@@ -40,20 +40,13 @@ export default function ProfileMenu() {
 
   return (
     <div className="absolute right-0 mt-2 w-48 bg-blue-900 rounded-md overflow-hidden shadow-xl z-20">
-      <a href="#" className="block px-4 py-2 text-sm text-white hover:bg-blue-800 transition-colors duration-200">
-        Ver perfil
-      </a>
-      <a href="#" className="block px-4 py-2 text-sm text-white hover:bg-blue-800 transition-colors duration-200">
-        Configuración
-      </a>
-      {/* Agregar el evento onClick al enlace de cerrar sesión */}
-      <a 
-        href="#" 
-        className="block px-4 py-2 text-sm text-white hover:bg-blue-800 transition-colors duration-200"
-        onClick={handleLogout} // Al hacer clic en este enlace, ejecutará handleLogout
+      {/* Solo el botón de cerrar sesión */}
+      <button
+        className="block w-full px-4 py-2 text-sm text-white hover:bg-blue-800 transition-colors duration-200 text-left"
+        onClick={handleLogout} // Ejecuta handleLogout al hacer clic
       >
         Cerrar sesión
-      </a>
+      </button>
     </div>
   );
 }
