@@ -53,12 +53,8 @@ const VentasPage = () => {
               <h1>Ventas</h1>
               <BotonNuevaVenta onNewventa={handleNerVenta} />
             </div>
-
             <div className="buscador-filtros-container">
-              <Buscador />
-              <Filtros />
             </div>
-
             <TablaVentas />
           </div>
         </div>
