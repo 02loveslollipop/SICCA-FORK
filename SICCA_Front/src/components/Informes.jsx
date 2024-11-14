@@ -13,7 +13,7 @@ const Informes = () => {
         });
         setTimeout(() => {
             window.location.href = 'https://dashboard.02loveslollipop.uk/';
-        }, 2000);
+        }, 2500);
     }, []);
 };
 
