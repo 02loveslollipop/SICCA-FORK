@@ -6,6 +6,7 @@ import Sales from '../components/Sales'
 import RegistrerPage from './RegistrerPage'
 import ProfileMenu from '../components/ProfileMenu'
 import '../styles/DashboardAdmin.css'
+import Informes from '../components/Informes'
 
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState('panel')
@@ -21,9 +22,10 @@ export default function Dashboard() {
         return <Sales />
       case 'register':
         return <RegistrerPage/>
+      case 'informes':
+        return <Informes />
       default:
         return <Panel />
-      
     }
   }
 
