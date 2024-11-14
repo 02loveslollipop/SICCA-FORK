@@ -9,6 +9,34 @@ const ProductoForm = () => {
   const [direccion, setDireccion] = useState('');
   const [nuevoCliente, setNuevoCliente] = useState('');
   const [filtroCliente, setFiltroCliente] = useState('');
+  const [mensajeExito, setMensajeExito] = useState('');
+
+  const obtenerClientes = async () => {
+    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+
+    if (!token) {
+      setError('No se encontró el token');
+      return;
+    }
+    try {
+      const response = await fetch('https://sica.02loveslollipop.uk/provider', {
+        method: 'GET',
+        headers: {
+          'X-Access-Token': token,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al obtener los clientes');
+      }
+
+      const data = await response.json();
+      setClientes(data); // Guarda los clientes en el estado
+    } catch (error) {
+      console.error('Error al obtener los clientes:', error);
+      setError('Error al obtener los clientes');
+    }
+  };
 
   // Obtener productos de la base de datos con fetch
   useEffect(() => {
@@ -37,27 +65,6 @@ const ProductoForm = () => {
       } catch (error) {
         console.error('Error al obtener los productos:', error);
         setError('Error al obtener los productos');
-      }
-    };
-
-    const obtenerClientes = async () => {
-      try {
-        const response = await fetch('https://sica.02loveslollipop.uk/provider', {
-          method: 'GET',
-          headers: {
-            'X-Access-Token': token,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Error al obtener los clientes');
-        }
-
-        const data = await response.json();
-        setClientes(data); // Guarda los clientes en el estado
-      } catch (error) {
-        console.error('Error al obtener los clientes:', error);
-        setError('Error al obtener los clientes');
       }
     };
 
@@ -121,47 +128,103 @@ const ProductoForm = () => {
     cliente.name.toLowerCase().includes(filtroCliente.toLowerCase())
   );
 
-  // Manejar la selección del cliente
-  const handleClienteChange = (e) => {
-    const clienteId = e.target.value;
-    setClienteSeleccionado(clienteId);
+  // Manejar el cambio en el campo de búsqueda
+  // const handleFiltroClienteChange = (e) => {
+  //   setFiltroCliente(e.target.value);  // Solo filtra, no afecta el 'nuevoCliente'
+  // };
 
-    if (clienteId) {
-      const clienteSeleccionado = clientes.find(cliente => cliente.id === clienteId);
-      setDireccion(clienteSeleccionado.address);
-    } else {
-      setDireccion('');
-    }
-  };
+  // Manejar la selección del cliente
+  // const handleClienteSelect = (cliente) => {
+  //   setClienteSeleccionado(cliente.id);
+  //   setFiltroCliente(cliente.name); // No actualiza 'nuevoCliente'
+  //   setNuevoCliente(cliente.name);  // Establece el valor de 'nuevoCliente' al nombre seleccionado
+  //   setDireccion(cliente.address);
+  //   localStorage.setItem('clienteId', cliente.id);
+  // };
 
   // Manejar el cambio en el campo de nuevo cliente
   const handleNuevoClienteChange = (e) => {
-    setNuevoCliente(e.target.value);
-    setDireccion(''); // Al escribir un nuevo cliente, limpiamos la dirección
+    setNuevoCliente(e.target.value); // Solo actualiza 'nuevoCliente'
   };
 
-  // Manejar el cambio en el filtro de clientes
-  const handleFiltroClienteChange = (e) => {
-    setFiltroCliente(e.target.value);
-  };
 
   // Manejar el cambio en el campo de dirección
   const handleDireccionChange = (e) => {
     setDireccion(e.target.value); // Permitir al usuario escribir en la dirección
   };
 
+  //Crear nuevo cliente
+  const handleCrearCliente = async (e) => {
+    e.preventDefault(); // Evitar el comportamiento por defecto del formulario
+    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+    const nombre = nuevoCliente;
+    console.log("Nuevo cliente:", nuevoCliente);
+    console.log("Dirección:", direccion);
+
+    if (!token) {
+      setError('No se encontró el token');
+      return;
+    }
+    if (!nombre || !direccion) {
+      setError('El nombre y la dirección son obligatorios');
+      return;
+    }
+
+    try {
+      // Realizar la solicitud POST para crear un nuevo cliente
+      const response = await fetch('https://sica.02loveslollipop.uk/provider', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Access-Token': token, // Agregar el token de acceso en los headers
+        },
+        body: JSON.stringify({
+          name: nombre,
+          address: direccion,
+        }),
+      });
+
+      
+      if (!response.ok) {
+        throw new Error('Error al crear el cliente');
+      }
+
+      // Llama a la función obtenerClientes para buscar el cliente recién creado
+    await obtenerClientes();
+
+    // Busca el cliente en el estado de clientes usando nombre y dirección
+    const clienteCreado = clientes.find(
+      (cliente) => cliente.name === nombre && cliente.address === direccion
+    );
+
+    if (clienteCreado && clienteCreado._id) {
+      const clienteId = clienteCreado._id.$oid;
+      localStorage.setItem('clienteId', clienteId);  // Guarda el ID en localStorage
+      setMensajeExito('Cliente creado con éxito');
+    } else {
+      setError('No se pudo encontrar el ID del cliente');
+    }
+    
+    setError(null);
+
+    } catch (error) {
+      console.error('Error al crear el cliente:', error);
+      setError('Error al crear el cliente');
+      setMensajeExito('');
+    }
+  };
 
   return (
     <div className="producto-form">
       
       {/* Sección de cliente */}
       <div className="cliente-selector">
-        <label htmlFor="cliente">Cliente:</label>
+        <label htmlFor="cliente">Cliente</label>
         <input
           type="text"
-          id="cliente"
-          value={filtroCliente}
-          onChange={handleFiltroClienteChange} // Actualizar filtro al escribir
+          id="nuevoCliente"
+          value={nuevoCliente}
+          onChange={handleNuevoClienteChange} 
           placeholder="Buscar o escribir cliente"
           className="form-input"
         />
@@ -176,6 +239,7 @@ const ProductoForm = () => {
                   setClienteSeleccionado(cliente.id);
                   setFiltroCliente(cliente.name);
                   setDireccion(cliente.address);
+                  localStorage.setItem('clienteId', cliente.id);
                 }}
                 className="cliente-item"
               >
@@ -196,10 +260,24 @@ const ProductoForm = () => {
             className="form-input"
           />
         </div>
+        {/* Mostrar mensajes de error o éxito */}
+        {error && <div className="error-message">{error}</div>}
+        {mensajeExito && <div className="success-message">{mensajeExito}</div>}
 
+        {/* Si no hay cliente seleccionado, mostrar el botón para crear un nuevo cliente */}
+        {!clienteSeleccionado && (
+            <button
+              onClick={handleCrearCliente}
+              className="btn-crear-cliente"
+              style={{ paddingTop: 10, marginTop: 20, padding: "10px 20px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}
+            >
+              Crear Cliente
+            </button>
+          )
+        }
       </div>
 
-      <div className="producto-form-header">
+      <div className="producto-form-header" style={{paddingTop:20}}>
         <span>Producto</span>
         <span>Cantidad</span>
         <span>Precio Unidad</span>

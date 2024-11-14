@@ -89,11 +89,27 @@ const LoginPage = () => {
           const dataRole = await response2.json();
           console.log("Datarole"+dataRole);
           const role = await dataRole.role;
-          //add role to local storage
           localStorage.setItem('role', role);
 
-          const userName = data.user.name; // Suponiendo que el nombre está en data.user.name
-          localStorage.setItem('userName', userName);
+          try {
+            // Obtener el ID del usuario
+            const responseUsers = await fetch('https://sica.02loveslollipop.uk/user', {
+              headers: { 'X-Access-Token': token },
+              method: 'GET'
+            });
+            
+            const dataUsers = await responseUsers.json();
+            const usuario = dataUsers.find(user => user.email === email);
+          
+            if (usuario && usuario._id ) {
+              const userId = usuario._id.$oid;
+              localStorage.setItem('userId', userId);  // Guarda el ID en el localStorage
+            } else {
+              console.error("No se pudo encontrar el ID del usuario");
+            }
+          } catch (error) {
+            console.error("Error al obtener el ID del usuario:", error);
+          }          
 
           Toast.fire({
             icon: "success",
@@ -102,6 +118,7 @@ const LoginPage = () => {
           // Save the token or perform any other actions needed
           // Redirect to the dashboard if role is admin, else redirect to the user registrar venta page
           console.log(role);
+        
           if (role === 'admin') {
             //http redirect to dashboard.02loveslollipop.uk
             window.location.href = '/dashboard';
