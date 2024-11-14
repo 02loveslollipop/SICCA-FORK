@@ -219,15 +219,15 @@ const ProductoForm = () => {
     <div className="producto-form">
       
       {/* Sección de cliente */}
-      <div className="cliente-selector">
-        <label htmlFor="cliente">Cliente</label>
+      <div className="cliente-selector" >
+        <label htmlFor="cliente" style={{paddingRight:10, paddingLeft:10}}>Cliente</label>
         <input
           type="text"
           id="nuevoCliente"
           value={nuevoCliente}
           onChange={handleNuevoClienteChange} 
           placeholder="Buscar o escribir cliente"
-          className="form-input"
+          className="form-input" 
         />
 
         {/* Mostrar los clientes filtrados */}
@@ -258,6 +258,7 @@ const ProductoForm = () => {
             id="direccion"
             value={direccion}
             onChange={handleDireccionChange}
+            placeholder="Dirección"
             className="form-input"
           />
         </div>
